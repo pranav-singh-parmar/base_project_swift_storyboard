@@ -51,6 +51,20 @@ enum JsonStructEnum {
     case OnlyModel, OnlyJson, Both
 }
 
+//https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#server_error_responses
+//Informational responses (100-199)
+//Successful responses (200–299)
+//Redirection messages (300–399)
+//Client error responses (400–499)
+//Server error responses (500–599)
+enum APIError: Error {
+    case InternetNotConnected, UrlNotValid, MapError, InvalidHTTPURLResponse, DataNotReceived,  InformationalError(Int), DecodingError, RedirectionalError(Int), ClientError(ClientErrorsEnum), ServerError(Int), Unknown(Int)
+}
+
+enum ClientErrorsEnum: Int {
+    case BadRequest = 400, Unauthorized = 401, PaymentRequired = 402, Forbidden = 403, Required = 404, NotFound = 405, MethodNotAllowed = 406, URITooLong = 414, Other
+}
+
 enum ApiStatus {
     case NotHitOnce, IsBeingHit, ApiHit, ApiHitWithError
 }

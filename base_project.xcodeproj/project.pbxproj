@@ -19,6 +19,8 @@
 		1547E58028B9266E0080DE77 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547E57F28B9266E0080DE77 /* Singleton.swift */; };
 		1547E58228B926B00080DE77 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547E58128B926B00080DE77 /* Alerts.swift */; };
 		1547E58428B9279F0080DE77 /* GeneralFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547E58328B9279F0080DE77 /* GeneralFunctions.swift */; };
+		157A1D9428BD0EE600DE0678 /* InternetConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157A1D9328BD0EE600DE0678 /* InternetConnectivity.swift */; };
+		157A1D9A28BD137000DE0678 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157A1D9928BD137000DE0678 /* ImageModel.swift */; };
 		159086CD28B676FA00439872 /* Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159086CC28B676FA00439872 /* Extenstions.swift */; };
 		159086CF28B67ABD00439872 /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159086CE28B67ABD00439872 /* ApiServices.swift */; };
 		159086D128B67CF500439872 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159086D028B67CF500439872 /* AppConstants.swift */; };
@@ -59,6 +61,8 @@
 		1547E57F28B9266E0080DE77 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		1547E58128B926B00080DE77 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		1547E58328B9279F0080DE77 /* GeneralFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralFunctions.swift; sourceTree = "<group>"; };
+		157A1D9328BD0EE600DE0678 /* InternetConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectivity.swift; sourceTree = "<group>"; };
+		157A1D9928BD137000DE0678 /* ImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		159086CC28B676FA00439872 /* Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstions.swift; sourceTree = "<group>"; };
 		159086CE28B67ABD00439872 /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
 		159086D028B67CF500439872 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -141,6 +145,14 @@
 			path = base_projectUITests;
 			sourceTree = "<group>";
 		};
+		157A1D9828BD137000DE0678 /* Models used to send data */ = {
+			isa = PBXGroup;
+			children = (
+				157A1D9928BD137000DE0678 /* ImageModel.swift */,
+			);
+			path = "Models used to send data";
+			sourceTree = "<group>";
+		};
 		15E00E0D28AFDCD9001BD502 /* App Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +165,9 @@
 		15E00E0E28AFDD0C001BD502 /* ApiServices */ = {
 			isa = PBXGroup;
 			children = (
+				157A1D9828BD137000DE0678 /* Models used to send data */,
 				159086CE28B67ABD00439872 /* ApiServices.swift */,
+				157A1D9328BD0EE600DE0678 /* InternetConnectivity.swift */,
 			);
 			path = ApiServices;
 			sourceTree = "<group>";
@@ -339,8 +353,10 @@
 				1547E58028B9266E0080DE77 /* Singleton.swift in Sources */,
 				1524D5AA28AE8A6E00FB7B65 /* ViewController.swift in Sources */,
 				159086CD28B676FA00439872 /* Extenstions.swift in Sources */,
+				157A1D9428BD0EE600DE0678 /* InternetConnectivity.swift in Sources */,
 				15E00E1528AFDDE4001BD502 /* DesignableUIComponents.swift in Sources */,
 				159086D128B67CF500439872 /* AppConstants.swift in Sources */,
+				157A1D9A28BD137000DE0678 /* ImageModel.swift in Sources */,
 				1547E58428B9279F0080DE77 /* GeneralFunctions.swift in Sources */,
 				1524D5A628AE8A6E00FB7B65 /* AppDelegate.swift in Sources */,
 				1547E58228B926B00080DE77 /* Alerts.swift in Sources */,

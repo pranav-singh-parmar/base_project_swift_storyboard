@@ -18,6 +18,8 @@ class Singleton {
     
     let alerts = Alerts()
     
+    let internetConnectivity = InternetConnectivityViewModel()
+    
     let apiServices = ApiServices()
     
     let jsonDecoder = JSONDecoder()

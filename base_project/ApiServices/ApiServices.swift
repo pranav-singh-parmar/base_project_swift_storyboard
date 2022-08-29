@@ -135,23 +135,25 @@ class ApiServices {
     
     func hitApi<T: Decodable>(httpMethod: HTTPMethod, urlString: String, isAuthApi: Bool = false, parameterEncoding: ParameterEncoding = .None, params : [String: Any]? = nil, imageModel: [ImageModel]? = nil, returnRequired: JsonStructEnum = JsonStructEnum.OnlyModel, decodingStruct: T.Type, outputBlockForSucess: @escaping (_ receivedData: T?,_ jsonData: AnyObject?) -> Void, outputBlockForInternetNotConnected: @escaping () -> Void) {
         
-        if Singleton.sharedInstance.appEnvironmentObject.isConnectedToInternet {
+        if Singleton.sharedInstance.internetConnectivity.isConnectedToInternet {
             
             if let urlRequest = getURLRequest(httpMethod: httpMethod, urlString: urlString, isAuthApi: isAuthApi, parameterEncoding: parameterEncoding, params: params, imageModel: imageModel) {
                 
                 URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                     
-                    if let error = error {
-                        //maperror
+                    guard let _ = error else {
+                        self.printApiError(.MapError, inUrl: urlString)
                         return
                     }
                     
                     guard let response = response as? HTTPURLResponse else{
-                        //                        return Fail(error: APIError.InvalidHTTPURLResponse).eraseToAnyPublisher()
+                        self.printApiError(.InvalidHTTPURLResponse, inUrl: urlString)
+                        return
                     }
                     
                     guard let data = data else{
-                        
+                        self.printApiError(.DataNotReceived, inUrl: urlString)
+                        return
                     }
                     
                     DispatchQueue.main.async {
@@ -160,9 +162,10 @@ class ApiServices {
                         
                         switch response.statusCode {
                         case 100...199:
-                            print("in api \(urlString) InformationalError error", response.statusCode)
+                            self.printApiError(.InformationalError(response.statusCode), inUrl: urlString)
                         case 200...299:
-                            if returnRequired == JsonStructEnum.Both || returnRequired == JsonStructEnum.OnlyModel {
+                            switch returnRequired {
+                            case .OnlyModel, .Both:
                                 do {
                                     // let jsonData = try JSONSerialization.data(withJSONObject: json as AnyObject, options: .prettyPrinted)
                                     // let data = try JSONDecoder().decode(decodingStruct.self, from: jsonData)
@@ -175,15 +178,15 @@ class ApiServices {
                                     //added return here if not added here then outblock with nil, nil will be excecuted
                                     return
                                 } catch {
-                                    print("in api \(urlString) error", error.localizedDescription)
+                                    self.printApiError(.DecodingError, inUrl: urlString)
                                 }
-                            }else{
+                            case .OnlyJson:
                                 outputBlockForSucess(nil, json as AnyObject)
                                 //added return here if not added here then outblock with nil, nil will be excecuted
                                 return
                             }
                         case 300...399:
-                            print("in api \(urlString) Redirection messages", response.statusCode)
+                            self.printApiError(.RedirectionalError(response.statusCode), inUrl: urlString)
                         case 400...499:
                             let clientErrorEnum = ClientErrorsEnum(rawValue: response.statusCode) ?? .Other
                             switch clientErrorEnum {
@@ -207,65 +210,35 @@ class ApiServices {
                                     Singleton.sharedInstance.alerts.errorAlert(message: "Server Error")
                                 }
                             }
+                            self.printApiError(.ClientError(clientErrorEnum), inUrl: urlString)
                         case 500...599:
-                            print("in api \(urlString) Server error", response.statusCode)
+                            self.printApiError(.ServerError(response.statusCode), inUrl: urlString)
                         default:
+                            self.printApiError(.Unknown(response.statusCode), inUrl: urlString)
                             break
                         }
                     }
                 }
             } else {
-                let monitor = NWPathMonitor()
-                let queue = DispatchQueue(label: urlString)
-                monitor.pathUpdateHandler = { path in
-                    DispatchQueue.main.async {
-                        if path.status == .satisfied {
-                            outputBlockForInternetNotConnected()
-                            monitor.cancel()
-                        }
+                self.printApiError(.UrlNotValid, inUrl: urlString)
+            }
+        } else {
+            let monitor = NWPathMonitor()
+            let queue = DispatchQueue(label: urlString)
+            monitor.pathUpdateHandler = { path in
+                DispatchQueue.main.async {
+                    if path.status == .satisfied {
+                        outputBlockForInternetNotConnected()
+                        monitor.cancel()
                     }
                 }
-                monitor.start(queue: queue)
-                print("in api \(urlString) Internet Not Connected error")
             }
+            monitor.start(queue: queue)
+            self.printApiError(.InternetNotConnected, inUrl: urlString)
         }
     }
     
-    func printError() {
-        
+    private func printApiError(_ apiError: APIError, inUrl urlString: String) {
+        print("in api \(urlString) \(apiError)")
     }
 }
-
-//MARK: - ImageModel
-struct ImageModel: Codable{
-    let file: Data
-    let fileKeyName: String
-    let fileName: String
-    // mime type is file type(image, video etc.)
-    let mimeType: String
-}
-
-enum APIError: Error {
-    case InternetNotConnected
-    case UrlNotValid
-    case MapError
-    case InvalidHTTPURLResponse
-    case DataNotReceived
-    case InformationalError(Int)
-    case DecodingError
-    case RedirectionalError(Int)
-    case ClientError(ClientErrorsEnum)
-    case ServerError(Int)
-    case Unknown(Int)
-}
-
-enum ClientErrorsEnum: Int {
-    case BadRequest = 400, Unauthorized = 401, PaymentRequired = 402, Forbidden = 403, Required = 404, NotFound = 405, MethodNotAllowed = 406, URITooLong = 414, Other
-}
-
-//https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#server_error_responses
-//Informational responses (100-199)
-//Successful responses (200–299)
-//Redirection messages (300–399)
-//Client error responses (400–499)
-//Server error responses (500–599)
