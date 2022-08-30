@@ -19,7 +19,7 @@ class InternetConnectivityViewModel {
         checkConnection()
     }
     
-    func checkConnection() {
+    private func checkConnection() {
         monitor.pathUpdateHandler = { path in
             DispatchQueue.main.async {
                 if path.status == .satisfied {

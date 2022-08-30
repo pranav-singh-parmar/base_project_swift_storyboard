@@ -17,7 +17,9 @@ class ApiServices {
         }
         if let component = urlComponents {
             //https://stackoverflow.com/questions/27723912/swift-get-request-with-parameters
-            //this code is added so that any space in the value can be handled
+            //this code is added because some servers interpret '+' as space becuase of x-www-form-urlencoded specification
+            //so we have to percent escape it manually because URLComponents does not perform it
+            //space is percent encoded as %20 and '+' is encoded as "%2B"
             urlComponents?.percentEncodedQuery = component.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
         }
         return urlComponents
@@ -135,7 +137,7 @@ class ApiServices {
     
     func hitApi<T: Decodable>(httpMethod: HTTPMethod, urlString: String, isAuthApi: Bool = false, parameterEncoding: ParameterEncoding = .None, params : [String: Any]? = nil, imageModel: [ImageModel]? = nil, returnRequired: JsonStructEnum = JsonStructEnum.OnlyModel, decodingStruct: T.Type, outputBlockForSucess: @escaping (_ receivedData: T?,_ jsonData: AnyObject?) -> Void, outputBlockForInternetNotConnected: @escaping () -> Void) {
         
-        if Singleton.sharedInstance.internetConnectivity.isConnectedToInternet {
+//        if Singleton.sharedInstance.internetConnectivity.isConnectedToInternet {
             
             if let urlRequest = getURLRequest(httpMethod: httpMethod, urlString: urlString, isAuthApi: isAuthApi, parameterEncoding: parameterEncoding, params: params, imageModel: imageModel) {
                 
@@ -222,20 +224,20 @@ class ApiServices {
             } else {
                 self.printApiError(.UrlNotValid, inUrl: urlString)
             }
-        } else {
-            let monitor = NWPathMonitor()
-            let queue = DispatchQueue(label: urlString)
-            monitor.pathUpdateHandler = { path in
-                DispatchQueue.main.async {
-                    if path.status == .satisfied {
-                        outputBlockForInternetNotConnected()
-                        monitor.cancel()
-                    }
-                }
-            }
-            monitor.start(queue: queue)
-            self.printApiError(.InternetNotConnected, inUrl: urlString)
-        }
+//        } else {
+//            let monitor = NWPathMonitor()
+//            let queue = DispatchQueue(label: urlString)
+//            monitor.pathUpdateHandler = { path in
+//                DispatchQueue.main.async {
+//                    if path.status == .satisfied {
+//                        outputBlockForInternetNotConnected()
+//                        monitor.cancel()
+//                    }
+//                }
+//            }
+//            monitor.start(queue: queue)
+//            self.printApiError(.InternetNotConnected, inUrl: urlString)
+//        }
     }
     
     private func printApiError(_ apiError: APIError, inUrl urlString: String) {

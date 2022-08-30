@@ -21,6 +21,15 @@
 		1547E58428B9279F0080DE77 /* GeneralFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547E58328B9279F0080DE77 /* GeneralFunctions.swift */; };
 		157A1D9428BD0EE600DE0678 /* InternetConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157A1D9328BD0EE600DE0678 /* InternetConnectivity.swift */; };
 		157A1D9A28BD137000DE0678 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157A1D9928BD137000DE0678 /* ImageModel.swift */; };
+		15800F8E28BE664700C48505 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15800F8D28BE664700C48505 /* CharacterTableViewCell.swift */; };
+		15800F9528BE6D3E00C48505 /* Bitter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15800F9028BE6D3E00C48505 /* Bitter-Bold.ttf */; };
+		15800F9628BE6D3E00C48505 /* Bitter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15800F9128BE6D3E00C48505 /* Bitter-Medium.ttf */; };
+		15800F9728BE6D3E00C48505 /* Bitter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15800F9228BE6D3E00C48505 /* Bitter-SemiBold.ttf */; };
+		15800F9828BE6D3E00C48505 /* Bitter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15800F9328BE6D3E00C48505 /* Bitter-Regular.ttf */; };
+		15800F9928BE6D3E00C48505 /* Bitter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15800F9428BE6D3E00C48505 /* Bitter-Light.ttf */; };
+		15800F9B28BE6D6900C48505 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15800F9A28BE6D6900C48505 /* Colors.xcassets */; };
+		15800F9E28BE717F00C48505 /* CharacterApiClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15800F9D28BE717F00C48505 /* CharacterApiClass.swift */; };
+		15800FA128BE720200C48505 /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15800FA028BE720200C48505 /* CharactersModel.swift */; };
 		159086CD28B676FA00439872 /* Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159086CC28B676FA00439872 /* Extenstions.swift */; };
 		159086CF28B67ABD00439872 /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159086CE28B67ABD00439872 /* ApiServices.swift */; };
 		159086D128B67CF500439872 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159086D028B67CF500439872 /* AppConstants.swift */; };
@@ -63,6 +72,15 @@
 		1547E58328B9279F0080DE77 /* GeneralFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralFunctions.swift; sourceTree = "<group>"; };
 		157A1D9328BD0EE600DE0678 /* InternetConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectivity.swift; sourceTree = "<group>"; };
 		157A1D9928BD137000DE0678 /* ImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		15800F8D28BE664700C48505 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
+		15800F9028BE6D3E00C48505 /* Bitter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bitter-Bold.ttf"; sourceTree = "<group>"; };
+		15800F9128BE6D3E00C48505 /* Bitter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bitter-Medium.ttf"; sourceTree = "<group>"; };
+		15800F9228BE6D3E00C48505 /* Bitter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bitter-SemiBold.ttf"; sourceTree = "<group>"; };
+		15800F9328BE6D3E00C48505 /* Bitter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bitter-Regular.ttf"; sourceTree = "<group>"; };
+		15800F9428BE6D3E00C48505 /* Bitter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bitter-Light.ttf"; sourceTree = "<group>"; };
+		15800F9A28BE6D6900C48505 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		15800F9D28BE717F00C48505 /* CharacterApiClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterApiClass.swift; sourceTree = "<group>"; };
+		15800FA028BE720200C48505 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
 		159086CC28B676FA00439872 /* Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstions.swift; sourceTree = "<group>"; };
 		159086CE28B67ABD00439872 /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
 		159086D028B67CF500439872 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -153,6 +171,34 @@
 			path = "Models used to send data";
 			sourceTree = "<group>";
 		};
+		15800F8F28BE6D3E00C48505 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				15800F9028BE6D3E00C48505 /* Bitter-Bold.ttf */,
+				15800F9128BE6D3E00C48505 /* Bitter-Medium.ttf */,
+				15800F9228BE6D3E00C48505 /* Bitter-SemiBold.ttf */,
+				15800F9328BE6D3E00C48505 /* Bitter-Regular.ttf */,
+				15800F9428BE6D3E00C48505 /* Bitter-Light.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		15800F9C28BE716E00C48505 /* ApiClasses */ = {
+			isa = PBXGroup;
+			children = (
+				15800F9D28BE717F00C48505 /* CharacterApiClass.swift */,
+			);
+			path = ApiClasses;
+			sourceTree = "<group>";
+		};
+		15800F9F28BE71F800C48505 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				15800FA028BE720200C48505 /* CharactersModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		15E00E0D28AFDCD9001BD502 /* App Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +211,8 @@
 		15E00E0E28AFDD0C001BD502 /* ApiServices */ = {
 			isa = PBXGroup;
 			children = (
+				15800F9F28BE71F800C48505 /* Models */,
+				15800F9C28BE716E00C48505 /* ApiClasses */,
 				157A1D9828BD137000DE0678 /* Models used to send data */,
 				159086CE28B67ABD00439872 /* ApiServices.swift */,
 				157A1D9328BD0EE600DE0678 /* InternetConnectivity.swift */,
@@ -175,7 +223,9 @@
 		15E00E0F28AFDD21001BD502 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				15800F8F28BE6D3E00C48505 /* Fonts */,
 				1524D5AE28AE8A7000FB7B65 /* Assets.xcassets */,
+				15800F9A28BE6D6900C48505 /* Colors.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -184,11 +234,11 @@
 			isa = PBXGroup;
 			children = (
 				15E00E1328AFDDAE001BD502 /* UI Extenstions */,
-				159086CC28B676FA00439872 /* Extenstions.swift */,
-				1547E57F28B9266E0080DE77 /* Singleton.swift */,
-				1547E58328B9279F0080DE77 /* GeneralFunctions.swift */,
 				1547E58128B926B00080DE77 /* Alerts.swift */,
 				159086D028B67CF500439872 /* AppConstants.swift */,
+				159086CC28B676FA00439872 /* Extenstions.swift */,
+				1547E58328B9279F0080DE77 /* GeneralFunctions.swift */,
+				1547E57F28B9266E0080DE77 /* Singleton.swift */,
 			);
 			path = "Constants and Extenstions";
 			sourceTree = "<group>";
@@ -206,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				1524D5A928AE8A6E00FB7B65 /* ViewController.swift */,
+				15800F8D28BE664700C48505 /* CharacterTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -322,9 +373,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15800F9B28BE6D6900C48505 /* Colors.xcassets in Resources */,
 				1524D5B228AE8A7000FB7B65 /* LaunchScreen.storyboard in Resources */,
+				15800F9728BE6D3E00C48505 /* Bitter-SemiBold.ttf in Resources */,
 				1524D5AF28AE8A7000FB7B65 /* Assets.xcassets in Resources */,
+				15800F9928BE6D3E00C48505 /* Bitter-Light.ttf in Resources */,
+				15800F9628BE6D3E00C48505 /* Bitter-Medium.ttf in Resources */,
 				1524D5AD28AE8A6E00FB7B65 /* Main.storyboard in Resources */,
+				15800F9828BE6D3E00C48505 /* Bitter-Regular.ttf in Resources */,
+				15800F9528BE6D3E00C48505 /* Bitter-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +407,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				159086CF28B67ABD00439872 /* ApiServices.swift in Sources */,
+				15800F8E28BE664700C48505 /* CharacterTableViewCell.swift in Sources */,
 				1547E58028B9266E0080DE77 /* Singleton.swift in Sources */,
+				15800FA128BE720200C48505 /* CharactersModel.swift in Sources */,
 				1524D5AA28AE8A6E00FB7B65 /* ViewController.swift in Sources */,
 				159086CD28B676FA00439872 /* Extenstions.swift in Sources */,
 				157A1D9428BD0EE600DE0678 /* InternetConnectivity.swift in Sources */,
@@ -359,6 +418,7 @@
 				157A1D9A28BD137000DE0678 /* ImageModel.swift in Sources */,
 				1547E58428B9279F0080DE77 /* GeneralFunctions.swift in Sources */,
 				1524D5A628AE8A6E00FB7B65 /* AppDelegate.swift in Sources */,
+				15800F9E28BE717F00C48505 /* CharacterApiClass.swift in Sources */,
 				1547E58228B926B00080DE77 /* Alerts.swift in Sources */,
 				1524D5A828AE8A6E00FB7B65 /* SceneDelegate.swift in Sources */,
 			);

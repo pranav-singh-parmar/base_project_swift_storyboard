@@ -8,7 +8,8 @@
 import UIKit
 
 //https://betterprogramming.pub/what-are-ibdesignable-and-ibinspectable-in-swift-1e3440797d9
-@IBDesignable class CustomView: UIView {
+@IBDesignable
+class CustomView: UIView {
     
     @IBInspectable
     var cornerRadius: CGFloat {
@@ -95,7 +96,8 @@ import UIKit
     }
 }
  
-@IBDesignable class CustomCornerRadiusView: CustomView {
+@IBDesignable
+class CustomCornerRadiusView: CustomView {
     
     @IBInspectable
     var topLeftRadius: CGFloat = 0 {
@@ -138,7 +140,8 @@ import UIKit
     }
 }
 
-@IBDesignable class GradientView: CustomCornerRadiusView {
+@IBDesignable
+class GradientView: CustomCornerRadiusView {
     
     @IBInspectable
     var startColor: UIColor = .black {
