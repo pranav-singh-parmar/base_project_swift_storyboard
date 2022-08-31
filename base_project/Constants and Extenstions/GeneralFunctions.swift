@@ -11,7 +11,7 @@ import UIKit
 class GeneralFunctions {
     
     func getTopViewController() -> UIViewController? {
-        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        let rootViewController = UIApplication.shared.keyWindow?.rootViewController
         if let navigationController = rootViewController as? UINavigationController {
             return navigationController.viewControllers.first
         }

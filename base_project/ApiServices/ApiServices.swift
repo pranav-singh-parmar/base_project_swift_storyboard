@@ -143,7 +143,7 @@ class ApiServices {
                 
                 URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                     
-                    guard let _ = error else {
+                    if let _ = error {
                         self.printApiError(.MapError, inUrl: urlString)
                         return
                     }
@@ -220,7 +220,7 @@ class ApiServices {
                             break
                         }
                     }
-                }
+                }.resume()
             } else {
                 self.printApiError(.UrlNotValid, inUrl: urlString)
             }

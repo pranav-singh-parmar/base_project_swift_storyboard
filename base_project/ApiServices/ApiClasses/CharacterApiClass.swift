@@ -19,13 +19,13 @@ class CharactersApiClass {
         return total <= currentLength
     }
     
-    func paginateWithIndex(_ index: Int) {
+    func paginateWithIndex(_ index: Int, andExceutionBlock: @escaping (_ apiStatus: ApiStatus) -> Void) {
         if getCharactersAS != .IsBeingHit && index == currentLength - 1 && !fetchedAllData {
-            getCharacters(clearList: false)
+            getCharacters(withExcecutionBlock: andExceutionBlock, shouldClearList: false)
         }
     }
     
-    func getCharacters(clearList: Bool = true){
+    func getCharacters(withExcecutionBlock: @escaping (_ apiStatus: ApiStatus) -> Void, shouldClearList clearList: Bool = true) {
         getCharactersAS = .IsBeingHit
         
         if clearList {
@@ -35,11 +35,25 @@ class CharactersApiClass {
         
         let params = ["limit": 10, "offset": currentLength] as [String: Any]
         
-        Singleton.sharedInstance.apiServices.hitApi(httpMethod: .GET, urlString: AppConstants.ApiEndPoints.characters, isAuthApi: false, parameterEncoding: .QueryParameters, params: params, decodingStruct: Characters.self) { [weak self] receivedData, jsonData in
-            self?.getCharactersAS = .ApiHit
-            self?.getCharactersAS = .ApiHitWithError
+        Singleton.sharedInstance.apiServices.hitApi(httpMethod: .GET, urlString: AppConstants.ApiEndPoints.characters, isAuthApi: false, parameterEncoding: .QueryParameters, params: params, decodingStruct: Characters.self) { [weak self] charactersResponse, jsonData in
+            
+            if let charactersResponse = charactersResponse {
+                
+                if clearList {
+                    self?.characters.removeAll()
+                }
+                self?.characters.append(contentsOf: charactersResponse)
+                self?.currentLength = self?.characters.count ?? 0
+                self?.total = 30
+                self?.getCharactersAS = .ApiHit
+                
+            } else {
+                self?.getCharactersAS = .ApiHitWithError
+            }
+            
+            withExcecutionBlock(self?.getCharactersAS ?? .NotHitOnce)
         } outputBlockForInternetNotConnected: { [weak self] in
-            self?.getCharacters(clearList: clearList)
+            self?.getCharacters(withExcecutionBlock: withExcecutionBlock, shouldClearList: clearList)
         }
     }
 }
