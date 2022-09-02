@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     //MARK: - outlets
     @IBOutlet private weak var charactersTV: UITableView!
     
+    @IBOutlet private weak var acitivityIndicatory: UIActivityIndicatorView!
+    
     //MARK: - variablea
     private let charactersAC = CharactersApiClass()
     
@@ -64,23 +66,23 @@ extension ViewController {
         switch apiStatus {
         case .IsBeingHit:
             if charactersAC.characters.isEmpty {
-                
+                acitivityIndicatory.isHidden = false
+                charactersTV.isHidden = true
+            } else {
+                acitivityIndicatory.isHidden = false
+                charactersTV.isHidden = false
             }
-        case .ApiHit:
-            charactersTV.reloadData()
+        case .ApiHit, .ApiHitWithError:
+            acitivityIndicatory.isHidden = true
             if charactersAC.fetchedAllData {
                 charactersTV.tableFooterView = UIView()
-                charactersTV.tableFooterView?.isHidden = true
             } else {
                 let spinner = UIActivityIndicatorView(style: .gray)
                 spinner.startAnimating()
-                spinner.isAnimating
                 spinner.hidesWhenStopped = true
                 spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: charactersTV.bounds.width, height: CGFloat(44))
                 charactersTV.tableFooterView = spinner
-                charactersTV.tableFooterView?.isHidden = false
             }
-        case .ApiHitWithError:
             charactersTV.reloadData()
         default:
             break

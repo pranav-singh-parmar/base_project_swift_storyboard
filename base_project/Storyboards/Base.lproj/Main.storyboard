@@ -17,6 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1Wx-zx-Mp9">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oV1-A9-hZO">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -74,13 +77,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="1Wx-zx-Mp9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dpq-ow-TKY"/>
                             <constraint firstItem="oV1-A9-hZO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HUJ-as-GO5"/>
+                            <constraint firstItem="1Wx-zx-Mp9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MvT-da-asP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oV1-A9-hZO" secondAttribute="bottom" id="d1i-S8-Q5U"/>
                             <constraint firstItem="oV1-A9-hZO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="may-gp-d3Z"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oV1-A9-hZO" secondAttribute="trailing" id="ucz-dy-wge"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="acitivityIndicatory" destination="1Wx-zx-Mp9" id="Nzk-NL-MJK"/>
                         <outlet property="charactersTV" destination="oV1-A9-hZO" id="GTJ-Im-7eg"/>
                     </connections>
                 </viewController>
