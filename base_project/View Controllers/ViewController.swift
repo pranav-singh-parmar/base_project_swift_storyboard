@@ -55,7 +55,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        charactersAC.paginateWithIndex(indexPath.row, andExceutionBlock: updateScreenOnReceivingApiStatus)
+        if charactersAC.isLastIndex(indexPath.row) {
+            if charactersAC.fetchedAllData {
+                charactersTV.tableFooterView = UIView()
+            } else {
+                let spinner = UIActivityIndicatorView(style: .gray)
+                spinner.startAnimating()
+                spinner.hidesWhenStopped = true
+                spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: charactersTV.bounds.width, height: CGFloat(44))
+                charactersTV.tableFooterView = spinner
+                charactersAC.paginateWithIndex(indexPath.row, andExceutionBlock: updateScreenOnReceivingApiStatus)
+            }
+        }
     }
 }
 
@@ -67,21 +78,19 @@ extension ViewController {
         case .IsBeingHit:
             if charactersAC.characters.isEmpty {
                 acitivityIndicatory.isHidden = false
+                acitivityIndicatory.startAnimating()
                 charactersTV.isHidden = true
             } else {
-                acitivityIndicatory.isHidden = false
+                acitivityIndicatory.isHidden = true
+                if acitivityIndicatory.isAnimating {
+                    acitivityIndicatory.stopAnimating()
+                }
                 charactersTV.isHidden = false
             }
         case .ApiHit, .ApiHitWithError:
             acitivityIndicatory.isHidden = true
-            if charactersAC.fetchedAllData {
-                charactersTV.tableFooterView = UIView()
-            } else {
-                let spinner = UIActivityIndicatorView(style: .gray)
-                spinner.startAnimating()
-                spinner.hidesWhenStopped = true
-                spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: charactersTV.bounds.width, height: CGFloat(44))
-                charactersTV.tableFooterView = spinner
+            if acitivityIndicatory.isAnimating {
+                acitivityIndicatory.stopAnimating()
             }
             charactersTV.reloadData()
         default:

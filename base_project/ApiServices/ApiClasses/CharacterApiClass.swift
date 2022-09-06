@@ -19,15 +19,19 @@ class CharactersApiClass {
         return total <= currentLength
     }
     
+    func isLastIndex(_ index: Int) -> Bool {
+        return index == currentLength - 1
+    }
+    
     func paginateWithIndex(_ index: Int, andExceutionBlock: @escaping (_ apiStatus: ApiStatus) -> Void) {
-        if getCharactersAS != .IsBeingHit && index == currentLength - 1 && !fetchedAllData {
+        if getCharactersAS != .IsBeingHit && isLastIndex(index) && !fetchedAllData {
             getCharacters(withExcecutionBlock: andExceutionBlock, shouldClearList: false)
         }
     }
     
     func getCharacters(withExcecutionBlock: @escaping (_ apiStatus: ApiStatus) -> Void, shouldClearList clearList: Bool = true) {
         getCharactersAS = .IsBeingHit
-        
+        withExcecutionBlock(self.getCharactersAS)
         if clearList {
             currentLength = 0
             characters.removeAll()
