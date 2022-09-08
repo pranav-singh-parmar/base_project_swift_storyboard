@@ -23,15 +23,15 @@ class CharactersApiClass {
         return index == currentLength - 1
     }
     
-    func paginateWithIndex(_ index: Int, andExceutionBlock: @escaping (_ apiStatus: ApiStatus) -> Void) {
+    func paginateWithIndex(_ index: Int, andExceutionBlock: @escaping () -> Void) {
         if getCharactersAS != .IsBeingHit && isLastIndex(index) && !fetchedAllData {
             getCharacters(withExcecutionBlock: andExceutionBlock, shouldClearList: false)
         }
     }
     
-    func getCharacters(withExcecutionBlock: @escaping (_ apiStatus: ApiStatus) -> Void, shouldClearList clearList: Bool = true) {
+    func getCharacters(withExcecutionBlock: @escaping () -> Void, shouldClearList clearList: Bool = true) {
         getCharactersAS = .IsBeingHit
-        withExcecutionBlock(self.getCharactersAS)
+        withExcecutionBlock()
         if clearList {
             currentLength = 0
             characters.removeAll()
@@ -55,7 +55,7 @@ class CharactersApiClass {
                 self?.getCharactersAS = .ApiHitWithError
             }
             
-            withExcecutionBlock(self?.getCharactersAS ?? .NotHitOnce)
+            withExcecutionBlock()
         } outputBlockForInternetNotConnected: { [weak self] in
             self?.getCharacters(withExcecutionBlock: withExcecutionBlock, shouldClearList: clearList)
         }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ViewController: UIViewController {
 
@@ -28,12 +29,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         charactersTV.dataSource = self
         charactersTV.delegate = self
-        charactersAC.getCharacters(withExcecutionBlock: updateScreenOnReceivingApiStatus)
+        charactersAC.getCharacters(withExcecutionBlock: updateScreenOnUpdaintApiStatus)
     }
     
     //MARK: - obj methods
     @objc func onRefresh(_ refreshControl: UIRefreshControl) {
-        charactersAC.getCharacters(withExcecutionBlock: updateScreenOnReceivingApiStatus, shouldClearList: true)
+        charactersAC.getCharacters(withExcecutionBlock: updateScreenOnUpdaintApiStatus, shouldClearList: true)
     }
 }
 
@@ -48,6 +49,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let characterModel = charactersAC.characters[indexPath.row]
         
         cell.characterIVWidthConstraint.constant = AppConstants.DeviceDimensions.width * 0.15
+        let url = URL(string: characterModel.img ?? "")
+        cell.characterIV.kf.indicatorType = .activity
+        cell.characterIV.kf.setImage(
+            with: url,
+            options: [
+                .loadDiskFileSynchronously,
+                .cacheOriginalImage,
+                .transition(.fade(0.25)),
+            ])
         cell.characterNameLabel.text = characterModel.name ?? ""
         cell.characterPortrayedByLabel.text = characterModel.portrayed ?? ""
         
@@ -64,7 +74,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 spinner.hidesWhenStopped = true
                 spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: charactersTV.bounds.width, height: CGFloat(44))
                 charactersTV.tableFooterView = spinner
-                charactersAC.paginateWithIndex(indexPath.row, andExceutionBlock: updateScreenOnReceivingApiStatus)
+                charactersAC.paginateWithIndex(indexPath.row, andExceutionBlock: updateScreenOnUpdaintApiStatus)
             }
         }
     }
@@ -73,8 +83,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - api's
 extension ViewController {
     
-    private func updateScreenOnReceivingApiStatus(_ apiStatus: ApiStatus) {
-        switch apiStatus {
+    private func updateScreenOnUpdaintApiStatus() {
+        switch charactersAC.getCharactersAS {
         case .IsBeingHit:
             if charactersAC.characters.isEmpty {
                 acitivityIndicatory.isHidden = false
