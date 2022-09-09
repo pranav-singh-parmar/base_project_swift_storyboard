@@ -27,14 +27,16 @@ class ViewController: UIViewController {
     //MARK: - override methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Breaking Bad Characters"
         charactersTV.dataSource = self
         charactersTV.delegate = self
-        charactersAC.getCharacters(withExcecutionBlock: updateScreenOnUpdaintApiStatus)
+        charactersAC.getCharacterswithExecutionBlock(updateScreenOnUpdaingApiStatus)
+        charactersTV.refreshControl = refreshControl
     }
     
     //MARK: - obj methods
     @objc func onRefresh(_ refreshControl: UIRefreshControl) {
-        charactersAC.getCharacters(withExcecutionBlock: updateScreenOnUpdaintApiStatus, shouldClearList: true)
+        charactersAC.getCharacterswithExecutionBlock(updateScreenOnUpdaingApiStatus, shouldClearList: true)
     }
 }
 
@@ -56,7 +58,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             options: [
                 .loadDiskFileSynchronously,
                 .cacheOriginalImage,
-                .transition(.fade(0.25)),
+                .transition(.fade(0.25))
             ])
         cell.characterNameLabel.text = characterModel.name ?? ""
         cell.characterPortrayedByLabel.text = characterModel.portrayed ?? ""
@@ -74,7 +76,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 spinner.hidesWhenStopped = true
                 spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: charactersTV.bounds.width, height: CGFloat(44))
                 charactersTV.tableFooterView = spinner
-                charactersAC.paginateWithIndex(indexPath.row, andExceutionBlock: updateScreenOnUpdaintApiStatus)
+                charactersAC.paginateWithIndex(indexPath.row, andExecutionBlock: updateScreenOnUpdaingApiStatus)
             }
         }
     }
@@ -83,7 +85,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - api's
 extension ViewController {
     
-    private func updateScreenOnUpdaintApiStatus() {
+    private func updateScreenOnUpdaingApiStatus() {
         switch charactersAC.getCharactersAS {
         case .IsBeingHit:
             if charactersAC.characters.isEmpty {
