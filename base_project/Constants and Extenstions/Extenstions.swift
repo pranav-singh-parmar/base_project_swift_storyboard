@@ -20,6 +20,14 @@ extension UIViewController {
             return topBarHeight
         }
     }
+    
+    func getSpinnerForTableView(_ tableView: UITableView) -> UIActivityIndicatorView {
+        let spinner = UIActivityIndicatorView(style: .gray)
+        spinner.startAnimating()
+        spinner.hidesWhenStopped = true
+        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+        return spinner
+    }
 }
 
 //MARK: - UIBezierPath

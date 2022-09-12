@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     //MARK: - outlets
     @IBOutlet private weak var charactersTV: UITableView!
     
+    @IBOutlet private weak var noDataAvailableLabel: UILabel!
+    
     @IBOutlet private weak var acitivityIndicatory: UIActivityIndicatorView!
     
     //MARK: - variablea
@@ -24,17 +26,17 @@ class ViewController: UIViewController {
         return refreshControl
     }()
     
-    //MARK: - override methods
+    //MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Breaking Bad Characters"
         charactersTV.dataSource = self
         charactersTV.delegate = self
-        charactersAC.getCharacterswithExecutionBlock(updateScreenOnUpdaingApiStatus)
         charactersTV.refreshControl = refreshControl
+        charactersAC.getCharacterswithExecutionBlock(updateScreenOnUpdaingApiStatus)
     }
     
-    //MARK: - obj methods
+    //MARK: - objc methods
     @objc func onRefresh(_ refreshControl: UIRefreshControl) {
         charactersAC.getCharacterswithExecutionBlock(updateScreenOnUpdaingApiStatus, shouldClearList: true)
     }
@@ -69,13 +71,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if charactersAC.isLastIndex(indexPath.row) {
             if charactersAC.fetchedAllData {
-                charactersTV.tableFooterView = UIView()
+                tableView.tableFooterView = UIView()
             } else {
-                let spinner = UIActivityIndicatorView(style: .gray)
-                spinner.startAnimating()
-                spinner.hidesWhenStopped = true
-                spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: charactersTV.bounds.width, height: CGFloat(44))
-                charactersTV.tableFooterView = spinner
+                tableView.tableFooterView = getSpinnerForTableView(tableView)
                 charactersAC.paginateWithIndex(indexPath.row, andExecutionBlock: updateScreenOnUpdaingApiStatus)
             }
         }
@@ -104,6 +102,13 @@ extension ViewController {
             if acitivityIndicatory.isAnimating {
                 acitivityIndicatory.stopAnimating()
             }
+            if charactersAC.characters.isEmpty {
+                charactersTV.isHidden = true
+                noDataAvailableLabel.isHidden = false
+            } else {
+                charactersTV.isHidden = false
+                noDataAvailableLabel.isHidden = true
+            }
             charactersTV.reloadData()
         default:
             break
@@ -112,5 +117,4 @@ extension ViewController {
             refreshControl.endRefreshing()
         }
     }
-    
 }

@@ -18,7 +18,7 @@ class CharacterTableViewCell: UITableViewCell {
     
     @IBOutlet weak var characterPortrayedByLabel: UILabel!
 
-    //MARK: - main method
+    //MARK: - Lifecycle methods
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

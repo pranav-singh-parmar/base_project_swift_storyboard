@@ -8,6 +8,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Bitter-Medium.ttf">
+            <string>Bitter-Medium</string>
+        </array>
+        <array key="Bitter-Regular.ttf">
+            <string>Bitter-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -36,14 +44,14 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knC-5G-lVs">
-                                                    <rect key="frame" x="124" y="12" width="278" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="124" y="12" width="278" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Bitter-Medium" family="Bitter" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oY-OD-Xs6">
-                                                    <rect key="frame" x="124" y="41" width="278" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="124" y="42" width="278" height="19.5"/>
+                                                    <fontDescription key="fontDescription" name="Bitter-Regular" family="Bitter" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -73,6 +81,12 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1Wx-zx-Mp9">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3P-JK-Jfh">
+                                <rect key="frame" x="125" y="436" width="164" height="24"/>
+                                <fontDescription key="fontDescription" name="Bitter-Medium" family="Bitter" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -81,14 +95,17 @@
                             <constraint firstItem="oV1-A9-hZO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HUJ-as-GO5"/>
                             <constraint firstItem="1Wx-zx-Mp9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MvT-da-asP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oV1-A9-hZO" secondAttribute="bottom" id="d1i-S8-Q5U"/>
+                            <constraint firstItem="s3P-JK-Jfh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jks-0v-bOI"/>
                             <constraint firstItem="oV1-A9-hZO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="may-gp-d3Z"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oV1-A9-hZO" secondAttribute="trailing" id="ucz-dy-wge"/>
+                            <constraint firstItem="s3P-JK-Jfh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yTp-E6-APt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fn6-Bt-dIb"/>
                     <connections>
                         <outlet property="acitivityIndicatory" destination="1Wx-zx-Mp9" id="Nzk-NL-MJK"/>
                         <outlet property="charactersTV" destination="oV1-A9-hZO" id="GTJ-Im-7eg"/>
+                        <outlet property="noDataAvailableLabel" destination="s3P-JK-Jfh" id="xj7-aP-YfW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

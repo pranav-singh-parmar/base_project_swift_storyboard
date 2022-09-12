@@ -19,6 +19,7 @@
 		1547E58028B9266E0080DE77 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547E57F28B9266E0080DE77 /* Singleton.swift */; };
 		1547E58228B926B00080DE77 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547E58128B926B00080DE77 /* Alerts.swift */; };
 		1547E58428B9279F0080DE77 /* GeneralFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547E58328B9279F0080DE77 /* GeneralFunctions.swift */; };
+		157279C728CF9E4A0048C015 /* CustomUIKitProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157279C628CF9E4A0048C015 /* CustomUIKitProtocols.swift */; };
 		157A1D9428BD0EE600DE0678 /* InternetConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157A1D9328BD0EE600DE0678 /* InternetConnectivity.swift */; };
 		157A1D9A28BD137000DE0678 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157A1D9928BD137000DE0678 /* ImageModel.swift */; };
 		15800F8E28BE664700C48505 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15800F8D28BE664700C48505 /* CharacterTableViewCell.swift */; };
@@ -74,6 +75,7 @@
 		1547E57F28B9266E0080DE77 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		1547E58128B926B00080DE77 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		1547E58328B9279F0080DE77 /* GeneralFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralFunctions.swift; sourceTree = "<group>"; };
+		157279C628CF9E4A0048C015 /* CustomUIKitProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIKitProtocols.swift; sourceTree = "<group>"; };
 		157A1D9328BD0EE600DE0678 /* InternetConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectivity.swift; sourceTree = "<group>"; };
 		157A1D9928BD137000DE0678 /* ImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		15800F8D28BE664700C48505 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				15E00E1428AFDDE4001BD502 /* DesignableUIComponents.swift */,
+				157279C628CF9E4A0048C015 /* CustomUIKitProtocols.swift */,
 			);
 			path = "UI Extenstions";
 			sourceTree = "<group>";
@@ -306,7 +309,6 @@
 				A0C899256046F5BFDFEC81BC /* Pods-base_projectTests.debug.xcconfig */,
 				5A4A2C459DD1DD09768B2860 /* Pods-base_projectTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -565,6 +567,7 @@
 				15E00E1528AFDDE4001BD502 /* DesignableUIComponents.swift in Sources */,
 				159086D128B67CF500439872 /* AppConstants.swift in Sources */,
 				157A1D9A28BD137000DE0678 /* ImageModel.swift in Sources */,
+				157279C728CF9E4A0048C015 /* CustomUIKitProtocols.swift in Sources */,
 				1547E58428B9279F0080DE77 /* GeneralFunctions.swift in Sources */,
 				1524D5A628AE8A6E00FB7B65 /* AppDelegate.swift in Sources */,
 				15800F9E28BE717F00C48505 /* CharacterApiClass.swift in Sources */,
