@@ -97,7 +97,7 @@ class CustomView: UIView, CustomUIKitProtocol {
 }
  
 @IBDesignable
-class CustomCornerRadiusView: CustomView, CustomUIKitProtocol {
+class CustomCornerRadiusView: CustomView, CustomCornerRadiusUIKitProtocol {
     
     @IBInspectable
     var topLeftRadius: CGFloat = 0 {

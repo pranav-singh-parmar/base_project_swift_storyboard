@@ -27,20 +27,12 @@ protocol CustomCornerRadiusUIKitProtocol {
 }
 
 protocol GradientUIKitProtocol {
-//    var startColor: UIColor { set }
-//    var endColor: UIColor { set }
-//        
-//    var startLocation: Double { set }
-//    
-//    var endLocation: Double { set }
-//    
-//    var horizontalMode: Bool { set }
-//    
-//    var diagonalMode: Bool { set }
-//    
-//    override public class var layerClass: AnyClass { CAGradientLayer.self }
-//
-//    var gradientLayer: CAGradientLayer
+    var startColor: UIColor { get set }
+    var endColor: UIColor { get set }
+    var startLocation: Double { get set }
+    var endLocation: Double { get set }
+    var horizontalMode: Bool { get set }
+    var diagonalMode: Bool { get set }
 
     func updatePoints()
     func updateLocations()
