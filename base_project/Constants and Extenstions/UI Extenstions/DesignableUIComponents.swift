@@ -12,6 +12,16 @@ import UIKit
 class CustomView: UIView, CustomUIKitProtocol {
     
     @IBInspectable
+    var masksToBounds: Bool {
+        get {
+            return layer.masksToBounds
+        }
+        set {
+            layer.masksToBounds = newValue
+        }
+    }
+    
+    @IBInspectable
     var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
