@@ -8,6 +8,7 @@
 import UIKit
 
 //https://betterprogramming.pub/what-are-ibdesignable-and-ibinspectable-in-swift-1e3440797d9
+//MARK: - CustomView
 @IBDesignable
 class CustomView: UIView, CustomUIKitProtocol {
     
@@ -21,6 +22,15 @@ class CustomView: UIView, CustomUIKitProtocol {
         }
     }
     
+    //    for giving default values
+    //    var cornerRadius:CGFloat = 8.0
+    //    {
+    //        didSet
+    //        {
+    //            self.layer.cornerRadius = self.cornerRadius
+    //        }
+    //    }
+    
     @IBInspectable
     var cornerRadius: CGFloat {
         get {
@@ -30,7 +40,7 @@ class CustomView: UIView, CustomUIKitProtocol {
             layer.cornerRadius = newValue
         }
     }
-
+    
     @IBInspectable
     var borderWidth: CGFloat {
         get {
@@ -105,7 +115,8 @@ class CustomView: UIView, CustomUIKitProtocol {
         }
     }
 }
- 
+
+//MARK: - CustomCornerRadiusView
 @IBDesignable
 class CustomCornerRadiusView: CustomView, CustomCornerRadiusUIKitProtocol {
     
@@ -150,6 +161,7 @@ class CustomCornerRadiusView: CustomView, CustomCornerRadiusUIKitProtocol {
     }
 }
 
+//MARK: - GradientView
 @IBDesignable
 class GradientView: CustomCornerRadiusView, GradientUIKitProtocol {
     
@@ -196,9 +208,9 @@ class GradientView: CustomCornerRadiusView, GradientUIKitProtocol {
     }
     
     override public class var layerClass: AnyClass { CAGradientLayer.self }
-
+    
     var gradientLayer: CAGradientLayer { layer as! CAGradientLayer }
-
+    
     func updatePoints() {
         if horizontalMode {
             gradientLayer.startPoint = diagonalMode ? .init(x: 1, y: 0) : .init(x: 0, y: 0.5)

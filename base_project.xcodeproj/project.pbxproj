@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		151433B428D8C7F300F53ADB /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151433B328D8C7F300F53ADB /* CustomButton.swift */; };
+		151433B628D8C84200F53ADB /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151433B528D8C84100F53ADB /* CustomImageView.swift */; };
 		1524D5A628AE8A6E00FB7B65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1524D5A528AE8A6E00FB7B65 /* AppDelegate.swift */; };
 		1524D5A828AE8A6E00FB7B65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1524D5A728AE8A6E00FB7B65 /* SceneDelegate.swift */; };
 		1524D5AA28AE8A6E00FB7B65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1524D5A928AE8A6E00FB7B65 /* ViewController.swift */; };
@@ -34,7 +36,7 @@
 		159086CD28B676FA00439872 /* Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159086CC28B676FA00439872 /* Extenstions.swift */; };
 		159086CF28B67ABD00439872 /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159086CE28B67ABD00439872 /* ApiServices.swift */; };
 		159086D128B67CF500439872 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159086D028B67CF500439872 /* AppConstants.swift */; };
-		15E00E1528AFDDE4001BD502 /* DesignableUIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E00E1428AFDDE4001BD502 /* DesignableUIComponents.swift */; };
+		15E00E1528AFDDE4001BD502 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E00E1428AFDDE4001BD502 /* CustomView.swift */; };
 		A8818ED41E17DA2027FBEA6A /* Pods_base_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BDA8B46DDDD55A6220CB4AB /* Pods_base_project.framework */; };
 		BF9B7805625749FEA08572A1 /* Pods_base_project_base_projectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25796C5E5C3F8B09877A90C3 /* Pods_base_project_base_projectUITests.framework */; };
 		F12E86564C0CA241B1E963B7 /* Pods_base_projectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C04D4E1F144B9A7E925B72F /* Pods_base_projectTests.framework */; };
@@ -59,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		07FBC89028F990A7A01F5A1F /* Pods-base_project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-base_project.debug.xcconfig"; path = "Target Support Files/Pods-base_project/Pods-base_project.debug.xcconfig"; sourceTree = "<group>"; };
+		151433B328D8C7F300F53ADB /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		151433B528D8C84100F53ADB /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		1524D5A228AE8A6E00FB7B65 /* base_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = base_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1524D5A528AE8A6E00FB7B65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1524D5A728AE8A6E00FB7B65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,7 +94,7 @@
 		159086CC28B676FA00439872 /* Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstions.swift; sourceTree = "<group>"; };
 		159086CE28B67ABD00439872 /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
 		159086D028B67CF500439872 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		15E00E1428AFDDE4001BD502 /* DesignableUIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableUIComponents.swift; sourceTree = "<group>"; };
+		15E00E1428AFDDE4001BD502 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		1BDA8B46DDDD55A6220CB4AB /* Pods_base_project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_base_project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25796C5E5C3F8B09877A90C3 /* Pods_base_project_base_projectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_base_project_base_projectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4A2C459DD1DD09768B2860 /* Pods-base_projectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-base_projectTests.release.xcconfig"; path = "Target Support Files/Pods-base_projectTests/Pods-base_projectTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +133,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		151433B228D8C7B800F53ADB /* Custom UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				157279C628CF9E4A0048C015 /* CustomUIKitProtocols.swift */,
+				15E00E1428AFDDE4001BD502 /* CustomView.swift */,
+				151433B328D8C7F300F53ADB /* CustomButton.swift */,
+				151433B528D8C84100F53ADB /* CustomImageView.swift */,
+			);
+			path = "Custom UI Components";
+			sourceTree = "<group>";
+		};
 		1524D59928AE8A6E00FB7B65 = {
 			isa = PBXGroup;
 			children = (
@@ -283,8 +298,7 @@
 		15E00E1328AFDDAE001BD502 /* UI Extenstions */ = {
 			isa = PBXGroup;
 			children = (
-				15E00E1428AFDDE4001BD502 /* DesignableUIComponents.swift */,
-				157279C628CF9E4A0048C015 /* CustomUIKitProtocols.swift */,
+				151433B228D8C7B800F53ADB /* Custom UI Components */,
 			);
 			path = "UI Extenstions";
 			sourceTree = "<group>";
@@ -558,18 +572,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				159086CF28B67ABD00439872 /* ApiServices.swift in Sources */,
+				151433B628D8C84200F53ADB /* CustomImageView.swift in Sources */,
 				15800F8E28BE664700C48505 /* CharacterTableViewCell.swift in Sources */,
 				1547E58028B9266E0080DE77 /* Singleton.swift in Sources */,
 				15800FA128BE720200C48505 /* CharactersModel.swift in Sources */,
 				1524D5AA28AE8A6E00FB7B65 /* ViewController.swift in Sources */,
 				159086CD28B676FA00439872 /* Extenstions.swift in Sources */,
 				157A1D9428BD0EE600DE0678 /* InternetConnectivity.swift in Sources */,
-				15E00E1528AFDDE4001BD502 /* DesignableUIComponents.swift in Sources */,
+				15E00E1528AFDDE4001BD502 /* CustomView.swift in Sources */,
 				159086D128B67CF500439872 /* AppConstants.swift in Sources */,
 				157A1D9A28BD137000DE0678 /* ImageModel.swift in Sources */,
 				157279C728CF9E4A0048C015 /* CustomUIKitProtocols.swift in Sources */,
 				1547E58428B9279F0080DE77 /* GeneralFunctions.swift in Sources */,
 				1524D5A628AE8A6E00FB7B65 /* AppDelegate.swift in Sources */,
+				151433B428D8C7F300F53ADB /* CustomButton.swift in Sources */,
 				15800F9E28BE717F00C48505 /* CharacterApiClass.swift in Sources */,
 				1547E58228B926B00080DE77 /* Alerts.swift in Sources */,
 				1524D5A828AE8A6E00FB7B65 /* SceneDelegate.swift in Sources */,

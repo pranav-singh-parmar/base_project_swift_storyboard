@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 //MARK: - UIViewController
 extension UIViewController {
@@ -84,6 +85,34 @@ extension UIBezierPath {
         
         path.closeSubpath()
         cgPath = path
+    }
+}
+
+//MARK: - UIImageView
+extension UIImageView {
+    func showImageFromURLString(_ urlString: String) {
+        let url = URL(string: urlString)
+        //        let processor = DownsamplingImageProcessor(size: self.bounds.size)
+        //                     |> RoundCornerImageProcessor(cornerRadius: 20)
+        self.kf.indicatorType = .activity
+        self.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "placeholderImage"),
+            options: [
+                //.processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])
+        {
+            result in
+            switch result {
+            case .success(let value):
+                print("Task done for: \(value.source.url?.absoluteString ?? "")")
+            case .failure(let error):
+                print("Job failed: \(error.localizedDescription)")
+            }
+        }
     }
 }
 

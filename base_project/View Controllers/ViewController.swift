@@ -53,15 +53,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let characterModel = charactersAC.characters[indexPath.row]
         
         cell.characterIVWidthConstraint.constant = AppConstants.DeviceDimensions.width * 0.15
-        let url = URL(string: characterModel.img ?? "")
-        cell.characterIV.kf.indicatorType = .activity
-        cell.characterIV.kf.setImage(
-            with: url,
-            options: [
-                .loadDiskFileSynchronously,
-                .cacheOriginalImage,
-                .transition(.fade(0.25))
-            ])
+        cell.characterIV?.showImageFromURLString(characterModel.img ?? "")
         cell.characterNameLabel.text = characterModel.name ?? ""
         cell.characterPortrayedByLabel.text = characterModel.portrayed ?? ""
         
