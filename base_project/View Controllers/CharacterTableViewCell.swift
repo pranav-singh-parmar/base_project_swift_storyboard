@@ -10,7 +10,9 @@ import UIKit
 class CharacterTableViewCell: UITableViewCell {
     
     //MARK: - outlets
-    @IBOutlet weak var characterIV: UIImageView!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var characterIV: CustomImageView!
     
     @IBOutlet weak var characterIVWidthConstraint: NSLayoutConstraint!
     

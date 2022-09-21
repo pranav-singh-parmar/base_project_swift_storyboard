@@ -33,6 +33,13 @@ class CustomImageView: UIImageView, CustomUIKitProtocol {
     }
     
     @IBInspectable
+    open var isCircle: Bool = false {
+        didSet {
+            self.updateBorder()
+        }
+    }
+    
+    @IBInspectable
     var borderWidth: CGFloat {
         get {
             return layer.borderWidth
@@ -103,6 +110,14 @@ class CustomImageView: UIImageView, CustomUIKitProtocol {
             } else {
                 layer.shadowColor = nil
             }
+        }
+    }
+    
+    private func updateBorder() {
+        if isCircle {
+            self.layer.cornerRadius = self.frame.size.width/2
+        }else {
+            self.layer.cornerRadius = cornerRadius
         }
     }
 }

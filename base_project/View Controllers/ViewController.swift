@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     //MARK: - outlets
     @IBOutlet private weak var charactersTV: UITableView!
     
-    @IBOutlet private weak var noDataAvailableLabel: UILabel!
+    @IBOutlet private weak var emptyListView: EmptyListView!
     
     @IBOutlet private weak var acitivityIndicatory: UIActivityIndicatorView!
     
@@ -29,7 +29,10 @@ class ViewController: UIViewController {
     //MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Breaking Bad Characters"
+        self.title = AppTexts.breakingBadCharacters
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        acitivityIndicatory.hidesWhenStopped = true
+        emptyListView.isHidden = true
         charactersTV.dataSource = self
         charactersTV.delegate = self
         charactersTV.refreshControl = refreshControl
@@ -50,9 +53,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = charactersTV.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self), for: indexPath) as! CharacterTableViewCell
+        
+        if indexPath.row == 0 {
+            cell.topConstraint.constant = 16
+        } else {
+            cell.topConstraint.constant = 0
+        }
+        
         let characterModel = charactersAC.characters[indexPath.row]
         
-        cell.characterIVWidthConstraint.constant = AppConstants.DeviceDimensions.width * 0.15
+        let width = DeviceDimensions.width * 0.15
+        cell.characterIVWidthConstraint.constant = width
+        cell.characterIV.cornerRadius = width / 2
         cell.characterIV?.showImageFromURLString(characterModel.img ?? "")
         cell.characterNameLabel.text = characterModel.name ?? ""
         cell.characterPortrayedByLabel.text = characterModel.portrayed ?? ""
@@ -66,7 +78,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.tableFooterView = UIView()
             } else {
                 tableView.tableFooterView = getSpinnerForTableView(tableView)
-                charactersAC.paginateWithIndex(indexPath.row, andExecutionBlock: updateScreenOnUpdaingApiStatus)
+                //charactersAC.paginateWithIndex(indexPath.row, andExecutionBlock: updateScreenOnUpdaingApiStatus)
             }
         }
     }
@@ -79,8 +91,10 @@ extension ViewController {
         switch charactersAC.getCharactersAS {
         case .IsBeingHit:
             if charactersAC.characters.isEmpty {
-                acitivityIndicatory.isHidden = false
-                acitivityIndicatory.startAnimating()
+                if !refreshControl.isRefreshing {
+                    acitivityIndicatory.isHidden = false
+                    acitivityIndicatory.startAnimating()
+                }
                 charactersTV.isHidden = true
             } else {
                 acitivityIndicatory.isHidden = true
@@ -90,16 +104,19 @@ extension ViewController {
                 charactersTV.isHidden = false
             }
         case .ApiHit, .ApiHitWithError:
-            acitivityIndicatory.isHidden = true
-            if acitivityIndicatory.isAnimating {
-                acitivityIndicatory.stopAnimating()
+            if refreshControl.isRefreshing {
+                refreshControl.endRefreshing()
+            } else {
+                if acitivityIndicatory.isAnimating {
+                    acitivityIndicatory.stopAnimating()
+                }
             }
             if charactersAC.characters.isEmpty {
                 charactersTV.isHidden = true
-                noDataAvailableLabel.isHidden = false
+                emptyListView.isHidden = false
             } else {
                 charactersTV.isHidden = false
-                noDataAvailableLabel.isHidden = true
+                emptyListView.isHidden = true
             }
             charactersTV.reloadData()
         default:

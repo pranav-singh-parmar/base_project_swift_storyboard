@@ -25,7 +25,7 @@ class CharactersApiClass {
     
     func paginateWithIndex(_ index: Int, andExecutionBlock excecutionBlock: @escaping () -> Void) {
         if getCharactersAS != .IsBeingHit && isLastIndex(index) && !fetchedAllData {
-        getCharacterswithExecutionBlock(excecutionBlock, shouldClearList: false)
+            getCharacterswithExecutionBlock(excecutionBlock, shouldClearList: false)
         }
     }
     
@@ -39,7 +39,7 @@ class CharactersApiClass {
         
         let params = ["limit": 10, "offset": currentLength] as [String: Any]
         
-        Singleton.sharedInstance.apiServices.hitApi(httpMethod: .GET, urlString: AppConstants.ApiEndPoints.characters, isAuthApi: false, parameterEncoding: .QueryParameters, params: params, decodingStruct: Characters.self) { [weak self] charactersResponse, jsonData in
+        Singleton.sharedInstance.apiServices.hitApi(httpMethod: .GET, urlString: AppURLs.ApiEndPoints.characters, isAuthApi: false, parameterEncoding: .QueryParameters, params: params, decodingStruct: Characters.self) { [weak self] charactersResponse, jsonData in
             
             if let charactersResponse = charactersResponse {
                 

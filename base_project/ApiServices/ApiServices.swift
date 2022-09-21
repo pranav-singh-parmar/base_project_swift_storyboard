@@ -219,6 +219,8 @@ class ApiServices {
                             self.printApiError(.Unknown(response.statusCode), inUrl: urlString)
                             break
                         }
+                        //added so that the screen updates even receiving an error
+                        outputBlockForSucess(nil, nil)
                     }
                 }.resume()
             } else {

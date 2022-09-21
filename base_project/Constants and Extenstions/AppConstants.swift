@@ -8,34 +8,31 @@
 import Foundation
 import UIKit
 
-struct AppConstants {
-    
+//MARK: - AppInfo
+struct AppInfo {
+    static let bundleIdentifier = Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String
+    static let appCurrentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    static let appName = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String
+    static var appId = 0
+}
+
+//MARK: - AppURLs
+struct AppURLs {
     static let baseURL = "https://www.breakingbadapi.com/"
-    static let dimensions = UIScreen.main.bounds.size
     
-    //MARK: - AppInfo
-    struct AppInfo {
-        static let bundleIdentifier = Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String
-        static let appCurrentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        static let appName = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String
-        static var appId = 0
+    struct Routes {
+        static let api = baseURL + "api/"
     }
     
-    //MARK: - DeviceDimensions
-    struct DeviceDimensions {
-        static let width = dimensions.width
-        static let height = dimensions.height
-    }
-    
-    //MARK: - AppURLs
-    struct AppURLs {
-        static let apiURL = baseURL + "api/"
-    }
-    
-    //MARK: - ApiEndPoints
     struct ApiEndPoints {
-        static let characters = AppURLs.apiURL + "characters"
+        static let characters = Routes.api + "characters"
     }
+}
+
+//MARK: - DeviceDimensions
+struct DeviceDimensions {
+    static let width = UIScreen.main.bounds.size.width
+    static let height = UIScreen.main.bounds.size.height
 }
 
 //MARK: - enums
