@@ -19,7 +19,7 @@ class EmptyListView: UIView {
     
     @IBOutlet weak var emptyLabel: UILabel!
     
-    //MARK: - variables
+    //MARK: - Variables
     private let nibName = String(describing: EmptyListView.self)
     
     //MARK: - Lifecycle methods

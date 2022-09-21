@@ -10,14 +10,14 @@ import Kingfisher
 
 class ViewController: UIViewController {
 
-    //MARK: - outlets
+    //MARK: - Outlets
     @IBOutlet private weak var charactersTV: UITableView!
     
     @IBOutlet private weak var emptyListView: EmptyListView!
     
     @IBOutlet private weak var acitivityIndicatory: UIActivityIndicatorView!
     
-    //MARK: - variablea
+    //MARK: - Variables
     private let charactersAC = CharactersApiClass()
     
     private lazy var refreshControl: UIRefreshControl = {
@@ -78,13 +78,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.tableFooterView = UIView()
             } else {
                 tableView.tableFooterView = getSpinnerForTableView(tableView)
-                //charactersAC.paginateWithIndex(indexPath.row, andExecutionBlock: updateScreenOnUpdaingApiStatus)
+                charactersAC.paginateWithIndex(indexPath.row, andExecutionBlock: updateScreenOnUpdaingApiStatus)
             }
         }
     }
 }
 
-//MARK: - api's
+//MARK: - APIs
 extension ViewController {
     
     private func updateScreenOnUpdaingApiStatus() {
