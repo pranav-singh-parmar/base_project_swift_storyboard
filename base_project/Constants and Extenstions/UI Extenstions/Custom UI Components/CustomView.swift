@@ -168,6 +168,19 @@ class CustomCornerRadiusView: CustomView, CustomCornerRadiusUIKitProtocol {
         let shape = CAShapeLayer()
         shape.path = path.cgPath
         layer.mask = shape
+        
+        if topLeftRadius != 0 || topRightRadius != 0 || bottomLeftRadius != 0 || bottomRightRadius != 0 {
+            //https://stackoverflow.com/questions/15832831/how-to-draw-calayer-border-around-its-mask
+            let borderLayer = CAShapeLayer()
+            borderLayer.path = path.cgPath
+            borderLayer.lineWidth = borderWidth
+            borderLayer.strokeColor = borderColor?.cgColor
+            borderLayer.fillColor = UIColor.clear.cgColor
+            self.layer.addSublayer(borderLayer)
+            
+            layer.borderWidth = 0
+            layer.borderColor = nil
+        }
     }
     
     override public func layoutSubviews() {
