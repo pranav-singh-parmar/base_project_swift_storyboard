@@ -59,7 +59,7 @@ enum APIError: Error {
 }
 
 enum ClientErrorsEnum: Int {
-    case BadRequest = 400, Unauthorized = 401, PaymentRequired = 402, Forbidden = 403, Required = 404, NotFound = 405, MethodNotAllowed = 406, URITooLong = 414, Other
+    case BadRequest = 400, Unauthorized = 401, PaymentRequired = 402, Forbidden = 403, NotFound = 404, MethodNotAllowed = 405, NotAcceptable = 406, URITooLong = 414, Other
 }
 
 enum ApiStatus {

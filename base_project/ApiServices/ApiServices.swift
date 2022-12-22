@@ -194,11 +194,11 @@ class ApiServices {
                             switch clientErrorEnum {
                             case .Unauthorized:
                                 Singleton.sharedInstance.alerts.handle401StatueCode()
-                            case .BadRequest, .PaymentRequired, .Forbidden, .Required, .NotFound, .MethodNotAllowed, .URITooLong, .Other:
+                            case .BadRequest, .PaymentRequired, .Forbidden, .NotFound, .MethodNotAllowed, .NotAcceptable, .URITooLong, .Other:
                                 if let message = json["message"] as? String {
-                                    Singleton.sharedInstance.alerts.errorAlert(message: message)
+                                    Singleton.sharedInstance.alerts.errorAlertWith(message: message)
                                 } else if let errorMessage = json["error"] as? String {
-                                    Singleton.sharedInstance.alerts.errorAlert(message: errorMessage)
+                                    Singleton.sharedInstance.alerts.errorAlertWith(message: errorMessage)
                                 } else if let errorMessages = json["error"] as? [String] {
                                     var errorMessage = ""
                                     for message in errorMessages {
@@ -207,9 +207,9 @@ class ApiServices {
                                         }
                                         errorMessage = errorMessage + message
                                     }
-                                    Singleton.sharedInstance.alerts.errorAlert(message: errorMessage)
+                                    Singleton.sharedInstance.alerts.errorAlertWith(message: errorMessage)
                                 } else{
-                                    Singleton.sharedInstance.alerts.errorAlert(message: "Server Error")
+                                    Singleton.sharedInstance.alerts.errorAlertWith(message: "Server Error")
                                 }
                             }
                             self.printApiError(.ClientError(clientErrorEnum), inUrl: urlString)

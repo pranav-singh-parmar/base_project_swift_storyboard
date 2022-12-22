@@ -16,71 +16,58 @@ class Alerts {
     private let titleAttributes = [NSAttributedString.Key.font: UIFont.bitterMedium(size: 17), NSAttributedString.Key.foregroundColor: UIColor.blackColor]
     private let messageAttributes = [NSAttributedString.Key.font: UIFont.bitterRegular(size: 14), NSAttributedString.Key.foregroundColor: UIColor.blackColor]
     
-    func errorAlert(title: String = "Error!", message: String){
-        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
+    func getAlertController(ofStyle style: UIAlertController.Style, withTitle title: String?, andMessage message: String?) -> UIAlertController {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: style)
         
-        let titleString = NSAttributedString(string: title, attributes: titleAttributes)
-        alert.setValue(titleString, forKey: attributedTitleKey)
+        if let title {
+            let titleString = NSAttributedString(string: title, attributes: titleAttributes)
+            alert.setValue(titleString, forKey: attributedTitleKey)
+        }
         
-        let messageString = NSAttributedString(string: message, attributes: messageAttributes)
-        alert.setValue(messageString, forKey: attributedMessageKey)
+        if let message {
+            let messageString = NSAttributedString(string: message, attributes: messageAttributes)
+            alert.setValue(messageString, forKey: attributedMessageKey)
+        }
         
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        
+        return alert
+    }
+    
+    func errorAlertWith(message: String){
+        alertWith(title: AppTexts.AlertMessages.errorWithExclamation, message: message)
+    }
+
+    func alertWith(title: String, message: String, defaultButtonTitle: String = "OK") {
+        let alert = getAlertController(ofStyle: .alert, withTitle: title, andMessage: message)
+
+        alert.addAction(UIAlertAction(title: AppTexts.AlertMessages.ok.uppercased(), style: UIAlertAction.Style.default, handler: nil))
+
         let vc = Singleton.sharedInstance.generalFunctions.getTopViewController()
         vc?.present(alert, animated: true, completion: nil)
     }
-    
-    func alertWithTwoButtonsAndActionOnSecond(title: String, message: String, firstButtonTitle: String, secondButtonTitle: String, secondButtonAction: @escaping ()-> Void){
-        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-        
-        let titleString = NSAttributedString(string: title, attributes: titleAttributes)
-        alert.setValue(titleString, forKey: attributedTitleKey)
-        
-        let messageString = NSAttributedString(string: message, attributes: messageAttributes)
-        alert.setValue(messageString, forKey: attributedMessageKey)
-        
-        alert.addAction(UIAlertAction(title: firstButtonTitle, style: UIAlertAction.Style.default, handler: nil))
-        
-        alert.addAction(UIAlertAction(title: secondButtonTitle, style: UIAlertAction.Style.default, handler: { _ in
-            secondButtonAction()
-        }))
-        
-        let vc = Singleton.sharedInstance.generalFunctions.getTopViewController()
-        vc?.present(alert, animated: true, completion: nil)
-    }
-    
+
     func internetNotConnectedAlert(outputBlock : @escaping () -> Void){
-        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-        
-        let titleString = NSAttributedString(string: "Network Unreachable!", attributes: titleAttributes)
-        alert.setValue(titleString, forKey: attributedTitleKey)
-        
-        let messageString = NSAttributedString(string: "You are not connected to Internet", attributes: messageAttributes)
-        alert.setValue(messageString, forKey: attributedMessageKey)
-        
-        alert.addAction(UIAlertAction(title: "Tap to Retry", style: UIAlertAction.Style.default) { (UIAlertAction) in
+        let alert = getAlertController(ofStyle: .alert,
+                                       withTitle: AppTexts.AlertMessages.networkUnreachableWithExclamation,
+                                       andMessage: AppTexts.AlertMessages.youAreNotConnectedToInternet)
+
+        alert.addAction(UIAlertAction(title: AppTexts.AlertMessages.tapToRetry, style: UIAlertAction.Style.default) { _ in
             outputBlock()
         })
-        
+
         let vc = Singleton.sharedInstance.generalFunctions.getTopViewController()
         vc?.present(alert, animated: true, completion: nil)
     }
-    
+
     func handle401StatueCode(){
-        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-        
-        let titleString = NSAttributedString(string: "Session Expired", attributes: titleAttributes)
-        alert.setValue(titleString, forKey: attributedTitleKey)
-        
-        let messageString = NSAttributedString(string: "Your Session has been Expired, PLease Login Again.", attributes: messageAttributes)
-        alert.setValue(messageString, forKey: attributedMessageKey)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(_: UIAlertAction!) in
+        let alert = getAlertController(ofStyle: .alert,
+                                       withTitle: AppTexts.AlertMessages.sessionExpiredWithExclamation,
+                                       andMessage: AppTexts.AlertMessages.yourSessionHasExpiredPleaseLoginAgain)
+
+        alert.addAction(UIAlertAction(title: AppTexts.AlertMessages.ok.uppercased(), style: UIAlertAction.Style.default, handler: { _ in
             Singleton.sharedInstance.generalFunctions.deinitilseAllVariables()
         }))
-        
-        
+
+
         let vc = Singleton.sharedInstance.generalFunctions.getTopViewController()
         vc?.present(alert, animated: true, completion: nil)
     }
