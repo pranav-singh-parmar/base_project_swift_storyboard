@@ -179,6 +179,22 @@ class ApiServices {
                                     }
                                     //added return here if not added here then outblock with nil, nil will be excecuted
                                     return
+                                } catch let DecodingError.typeMismatch(type, context) {
+                                    print("Type '\(type)' mismatch:", context.debugDescription)
+                                    print("codingPath:", context.codingPath)
+                                    self.printApiError(.DecodingError, inUrl: urlString)
+                                } catch let DecodingError.keyNotFound(key, context) {
+                                    print("Key '\(key)' not found:", context.debugDescription)
+                                    print("codingPath:", context.codingPath)
+                                    self.printApiError(.DecodingError, inUrl: urlString)
+                                } catch let DecodingError.valueNotFound(value, context) {
+                                    print("Value '\(value)' not found:", context.debugDescription)
+                                    print("codingPath:", context.codingPath)
+                                    self.printApiError(.DecodingError, inUrl: urlString)
+                                } catch let DecodingError.dataCorrupted(context) {
+                                    print("Data Corrupted:", context.debugDescription)
+                                    print("codingPath:", context.codingPath)
+                                    self.printApiError(.DecodingError, inUrl: urlString)
                                 } catch {
                                     self.printApiError(.DecodingError, inUrl: urlString)
                                 }
