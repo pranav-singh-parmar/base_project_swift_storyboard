@@ -36,7 +36,7 @@ class Alerts {
         alertWith(title: AppTexts.AlertMessages.errorWithExclamation, message: message)
     }
 
-    func alertWith(title: String, message: String, defaultButtonTitle: String = "OK") {
+    func alertWith(title: String, message: String, defaultButtonTitle: String = AppTexts.AlertMessages.ok) {
         let alert = getAlertController(ofStyle: .alert, withTitle: title, andMessage: message)
 
         alert.addAction(UIAlertAction(title: AppTexts.AlertMessages.ok.uppercased(), style: UIAlertAction.Style.default, handler: nil))
