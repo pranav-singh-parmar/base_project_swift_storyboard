@@ -20,12 +20,8 @@ struct AppInfo {
 struct AppURLs {
     static let baseURL = "https://www.breakingbadapi.com/"
     
-    struct Routes {
-        static let api = baseURL + "api/"
-    }
-    
-    struct ApiEndPoints {
-        static let characters = Routes.api + "characters"
+    static func getAPIURL() -> String {
+        return baseURL + "api/"
     }
 }
 
@@ -36,16 +32,18 @@ struct DeviceDimensions {
 }
 
 //MARK: - enums
-enum HTTPMethod: String {
-    case GET, POST, PUT, DELETE
-}
+typealias JSONKeyPair = [String: Any]
 
-enum ParameterEncoding {
-    case None, QueryParameters, JsonBody, URLFormEncoded, FormData
+enum HTTPMethod: String {
+    case get, post, put, delete
 }
 
 enum JsonStructEnum {
     case OnlyModel, OnlyJson, Both
+}
+
+enum ParameterEncoding: String {
+    case jsonBody, urlFormEncoded, formData
 }
 
 //https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#server_error_responses

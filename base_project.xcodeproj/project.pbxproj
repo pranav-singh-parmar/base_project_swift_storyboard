@@ -23,7 +23,7 @@
 		1547E58428B9279F0080DE77 /* GeneralFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1547E58328B9279F0080DE77 /* GeneralFunctions.swift */; };
 		157279C728CF9E4A0048C015 /* CustomUIKitProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157279C628CF9E4A0048C015 /* CustomUIKitProtocols.swift */; };
 		157A1D9428BD0EE600DE0678 /* InternetConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157A1D9328BD0EE600DE0678 /* InternetConnectivity.swift */; };
-		157A1D9A28BD137000DE0678 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157A1D9928BD137000DE0678 /* ImageModel.swift */; };
+		157A1D9A28BD137000DE0678 /* FileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157A1D9928BD137000DE0678 /* FileModel.swift */; };
 		15800F8E28BE664700C48505 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15800F8D28BE664700C48505 /* CharacterTableViewCell.swift */; };
 		15800F9528BE6D3E00C48505 /* Bitter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15800F9028BE6D3E00C48505 /* Bitter-Bold.ttf */; };
 		15800F9628BE6D3E00C48505 /* Bitter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15800F9128BE6D3E00C48505 /* Bitter-Medium.ttf */; };
@@ -39,6 +39,7 @@
 		15ACC1E628DB5E6800FC6234 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ACC1E528DB5E6800FC6234 /* EmptyListView.swift */; };
 		15ACC1E828DB607300FC6234 /* AppTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ACC1E728DB607300FC6234 /* AppTexts.swift */; };
 		15ACC1EA28DB620300FC6234 /* EmptyListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15ACC1E928DB620300FC6234 /* EmptyListView.xib */; };
+		15C3EBAB2B1BA3CE00E12469 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3EBAA2B1BA3CE00E12469 /* Endpoints.swift */; };
 		15E00E1528AFDDE4001BD502 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E00E1428AFDDE4001BD502 /* CustomView.swift */; };
 		A8818ED41E17DA2027FBEA6A /* Pods_base_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BDA8B46DDDD55A6220CB4AB /* Pods_base_project.framework */; };
 		BF9B7805625749FEA08572A1 /* Pods_base_project_base_projectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25796C5E5C3F8B09877A90C3 /* Pods_base_project_base_projectUITests.framework */; };
@@ -84,7 +85,7 @@
 		1547E58328B9279F0080DE77 /* GeneralFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralFunctions.swift; sourceTree = "<group>"; };
 		157279C628CF9E4A0048C015 /* CustomUIKitProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIKitProtocols.swift; sourceTree = "<group>"; };
 		157A1D9328BD0EE600DE0678 /* InternetConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectivity.swift; sourceTree = "<group>"; };
-		157A1D9928BD137000DE0678 /* ImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		157A1D9928BD137000DE0678 /* FileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileModel.swift; sourceTree = "<group>"; };
 		15800F8D28BE664700C48505 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		15800F9028BE6D3E00C48505 /* Bitter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bitter-Bold.ttf"; sourceTree = "<group>"; };
 		15800F9128BE6D3E00C48505 /* Bitter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bitter-Medium.ttf"; sourceTree = "<group>"; };
@@ -100,6 +101,7 @@
 		15ACC1E528DB5E6800FC6234 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		15ACC1E728DB607300FC6234 /* AppTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTexts.swift; sourceTree = "<group>"; };
 		15ACC1E928DB620300FC6234 /* EmptyListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyListView.xib; sourceTree = "<group>"; };
+		15C3EBAA2B1BA3CE00E12469 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		15E00E1428AFDDE4001BD502 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		1BDA8B46DDDD55A6220CB4AB /* Pods_base_project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_base_project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25796C5E5C3F8B09877A90C3 /* Pods_base_project_base_projectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_base_project_base_projectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,7 +208,7 @@
 		157A1D9828BD137000DE0678 /* Models used to send data */ = {
 			isa = PBXGroup;
 			children = (
-				157A1D9928BD137000DE0678 /* ImageModel.swift */,
+				157A1D9928BD137000DE0678 /* FileModel.swift */,
 			);
 			path = "Models used to send data";
 			sourceTree = "<group>";
@@ -264,6 +266,7 @@
 				15800F9C28BE716E00C48505 /* ApiClasses */,
 				157A1D9828BD137000DE0678 /* Models used to send data */,
 				159086CE28B67ABD00439872 /* ApiServices.swift */,
+				15C3EBAA2B1BA3CE00E12469 /* Endpoints.swift */,
 				157A1D9328BD0EE600DE0678 /* InternetConnectivity.swift */,
 			);
 			path = ApiServices;
@@ -599,8 +602,9 @@
 				157A1D9428BD0EE600DE0678 /* InternetConnectivity.swift in Sources */,
 				15E00E1528AFDDE4001BD502 /* CustomView.swift in Sources */,
 				159086D128B67CF500439872 /* AppConstants.swift in Sources */,
+				15C3EBAB2B1BA3CE00E12469 /* Endpoints.swift in Sources */,
 				15ACC1E828DB607300FC6234 /* AppTexts.swift in Sources */,
-				157A1D9A28BD137000DE0678 /* ImageModel.swift in Sources */,
+				157A1D9A28BD137000DE0678 /* FileModel.swift in Sources */,
 				15ACC1E628DB5E6800FC6234 /* EmptyListView.swift in Sources */,
 				157279C728CF9E4A0048C015 /* CustomUIKitProtocols.swift in Sources */,
 				1547E58428B9279F0080DE77 /* GeneralFunctions.swift in Sources */,
