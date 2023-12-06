@@ -39,14 +39,13 @@ class CharactersApiClass {
         
         let params = ["limit": 10, "offset": currentLength] as [String: Any]
         
-        var urlRequest =
-        Singleton.sharedInstance.apiServices.getURL(ofHTTPMethod: .get,
-                                                    forAppEndpoint: .characters,
-                                                    withQueryParameters: params)
+        var urlRequest = URLRequest(ofHTTPMethod: .get,
+                                    forAppEndpoint: .characters,
+                                    withQueryParameters: params)
         
         urlRequest?.addHeaders()
-        Singleton.sharedInstance.apiServices.hitApi(withURLRequest: urlRequest,
-                                                    decodingStruct: Characters.self) { [weak self] charactersResponse, jsonData in
+        
+        urlRequest?.hitApi(decodingStruct: Characters.self) { [weak self] charactersResponse, jsonData in
             
             if let charactersResponse = charactersResponse {
                 

@@ -20,7 +20,5 @@ class Singleton {
     
     let internetConnectivity = InternetConnectivityViewModel()
     
-    let apiServices = ApiServices()
-    
     let jsonDecoder = JSONDecoder()
 }

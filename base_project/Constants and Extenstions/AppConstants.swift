@@ -53,11 +53,29 @@ enum ParameterEncoding: String {
 //Client error responses (400–499)
 //Server error responses (500–599)
 enum APIError: Error {
-    case InternetNotConnected, UrlNotValid, MapError, InvalidHTTPURLResponse, DataNotReceived,  InformationalError(Int), DecodingError, RedirectionalError(Int), ClientError(ClientErrorsEnum), ServerError(Int), Unknown(Int)
+    case internetNotConnected,
+         urlNotValid,
+         mapError,
+         invalidHTTPURLResponse,
+         dataNotReceived,
+         informationalError(Int),
+         decodingError,
+         redirectionalError(Int),
+         clientError(ClientErrorsEnum),
+         serverError(Int),
+         unknown(Int)
 }
 
 enum ClientErrorsEnum: Int {
-    case BadRequest = 400, Unauthorized = 401, PaymentRequired = 402, Forbidden = 403, NotFound = 404, MethodNotAllowed = 405, NotAcceptable = 406, URITooLong = 414, Other
+    case badRequest = 400,
+         unauthorized = 401,
+         paymentRequired = 402,
+         forbidden = 403,
+         notFound = 404,
+         methodNotAllowed = 405,
+         notAcceptable = 406,
+         uriTooLong = 414,
+         other
 }
 
 enum ApiStatus {
