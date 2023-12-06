@@ -10,7 +10,7 @@ import Network
 
 extension URLRequest {
     
-    static let apiErrorTAG = "APIError:"
+    private static let apiErrorTAG = "APIError:"
     
     var getURLString: String {
         return self.url?.absoluteString ?? "URL not set"
