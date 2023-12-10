@@ -38,7 +38,7 @@ class EmptyListView: UIView {
         guard let view = loadViewFromNib() else { return }
         view.frame = self.bounds
         self.addSubview(view)
-        emptyListIVHeight.constant = DeviceDimensions.width * 0.7
+        emptyListIVHeight.constant = UIScreen.main.height(withMultiplier: 0.7)
         emptyLabel.text = AppTexts.noDataFound
         emptyListIV.image = UIImage(named: "noDataFoundImage")
     }

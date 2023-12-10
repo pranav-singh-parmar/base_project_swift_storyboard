@@ -41,7 +41,7 @@ class Alerts {
 
         alert.addAction(UIAlertAction(title: AppTexts.AlertMessages.ok.uppercased(), style: UIAlertAction.Style.default, handler: nil))
 
-        let vc = Singleton.sharedInstance.generalFunctions.getTopViewController()
+        let vc = UIApplication.shared.getTopViewController()
         vc?.present(alert, animated: true, completion: nil)
     }
 
@@ -54,7 +54,7 @@ class Alerts {
             outputBlock()
         })
 
-        let vc = Singleton.sharedInstance.generalFunctions.getTopViewController()
+        let vc = UIApplication.shared.getTopViewController()
         vc?.present(alert, animated: true, completion: nil)
     }
 
@@ -68,7 +68,7 @@ class Alerts {
         }))
 
 
-        let vc = Singleton.sharedInstance.generalFunctions.getTopViewController()
+        let vc = UIApplication.shared.getTopViewController()
         vc?.present(alert, animated: true, completion: nil)
     }
 }

@@ -20,5 +20,7 @@ class Singleton {
     
     let internetConnectivity = InternetConnectivityViewModel()
     
+    let jsonEncoder = JSONEncoder()
+    
     let jsonDecoder = JSONDecoder()
 }

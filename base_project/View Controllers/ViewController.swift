@@ -62,7 +62,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let characterModel = charactersAC.characters[indexPath.row]
         
-        let width = DeviceDimensions.width * 0.15
+        let width = UIScreen.main.width(withMultiplier: 0.15)
         cell.characterIVWidthConstraint.constant = width
         cell.characterIV.cornerRadius = width / 2
         cell.characterIV?.showImageFromURLString(characterModel.img ?? "")

@@ -1,5 +1,5 @@
 //
-//  Extenstions.swift
+//  UIExtenstions.swift
 //  base_project
 //
 //  Created by Pranav Singh on 24/08/22.
@@ -9,17 +9,60 @@ import Foundation
 import UIKit
 import Kingfisher
 
+//MARK: - UIScreen
+extension UIScreen {
+    func width(withMultiplier multiplier: CGFloat = 1) -> CGFloat {
+        return self.bounds.size.width * multiplier
+    }
+    
+    func height(withMultiplier multiplier: CGFloat = 1) -> CGFloat {
+        return self.bounds.size.height * multiplier
+    }
+}
+
+//MARK: - UIApplication
+extension UIApplication {
+    
+    var getKeyWindow: UIWindow? {
+        if #available(iOS 15, *) {
+            return (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.keyWindow
+        } else {
+            return UIApplication.shared.windows.first
+        }
+    }
+    
+    var getStatusBarHeight: CGFloat {
+        if #available(iOS 13.0, *),
+           let window = getKeyWindow {
+            return window.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        } else {
+            return UIApplication.shared.statusBarFrame.size.height
+        }
+    }
+    
+    func getTopViewController(_ baseVC: UIViewController? = UIApplication.shared.getKeyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = baseVC as? UINavigationController {
+            return getTopViewController(navigationController.visibleViewController)
+        }
+        if let tabBarController = baseVC as? UITabBarController {
+            return getTopViewController(tabBarController.selectedViewController)
+        }
+        if let presented = baseVC?.presentedViewController {
+            return getTopViewController(presented)
+        }
+        return baseVC
+    }
+}
+
 //MARK: - UIViewController
 extension UIViewController {
+    
+    var getNavBarHeight: CGFloat {
+        return self.navigationController?.navigationBar.bounds.height ?? 0
+    }
+    
     var topbarHeight: CGFloat {
-        if #available(iOS 13.0, *) {
-            return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
-            (self.navigationController?.navigationBar.frame.height ?? 0.0)
-        } else {
-            let topBarHeight = UIApplication.shared.statusBarFrame.size.height +
-            (self.navigationController?.navigationBar.frame.height ?? 0.0)
-            return topBarHeight
-        }
+        return getNavBarHeight + UIApplication.shared.getStatusBarHeight
     }
     
     func getSpinnerForTableView(_ tableView: UITableView) -> UIActivityIndicatorView {
@@ -112,15 +155,6 @@ extension UIImageView {
             case .failure(let error):
                 print("Job failed: \(error.localizedDescription)")
             }
-        }
-    }
-}
-
-//MARK: - Data
-extension Data {
-    mutating func appendString(_ string: String) {
-        if let data = string.data(using: .utf8) {
-            append(data)
         }
     }
 }
