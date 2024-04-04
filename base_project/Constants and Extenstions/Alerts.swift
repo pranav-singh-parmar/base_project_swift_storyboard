@@ -16,7 +16,7 @@ extension UIAlertController {
                      andMessage message: String?) {
         self.init(title: "", message: "", preferredStyle: style)
         self.setTitle(title)
-        self.setMessage(title)
+        self.setMessage(message)
     }
     
     private func setTitle(_ title: String?) {
@@ -69,58 +69,58 @@ extension UIAlertController {
 
 //MARK: - Alert Class
 class Alerts {
-    func showToast(withMessage message: String, seconds: Double = 2.0) {
-        let alert = UIAlertController(ofStyle: .alert,
+    func showToast(on vc: UIViewController?, withMessage message: String, seconds: Double = 2.0) {
+        let alertController = UIAlertController(ofStyle: .alert,
                                       withTitle: message,
                                       andMessage: nil)
         //alert.view.backgroundColor = UIColor.lightPrimaryColor
         //alert.view.alpha = 0.6
         //alert.view.layer.cornerRadius = 15
         
-        alert.present()
+        alertController.present(vc)
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
-            alert.dismiss(animated: true)
+            alertController.dismiss(animated: true)
         }
     }
     
-    func errorAlertWith(message: String) {
-        let alert = UIAlertController(ofStyle: .alert,
+    func errorAlertWith(message: String, on vc: UIViewController?) {
+        let alertController = UIAlertController(ofStyle: .alert,
                                       withTitle: AppTexts.AlertMessages.errorWithExclamation,
                                       andMessage: message)
-        alert.addOKButton()
-        alert.present()
+        alertController.addOKButton()
+        alertController.present(vc)
     }
 
     func okAlert(withTitle title: String,
                  message: String,
-                 defaultButtonTitle: String = AppTexts.AlertMessages.ok) {
-        let alert = UIAlertController(ofStyle: .alert,
+                 on vc: UIViewController?) {
+        let alertController = UIAlertController(ofStyle: .alert,
                                       withTitle: title,
                                       andMessage: message)
-        alert.addOKButton()
-        alert.present()
+        alertController.addOKButton()
+        alertController.present()
     }
 
     func internetNotConnectedAlert(outputBlock: @escaping () -> Void) {
-        let alert = UIAlertController(ofStyle: .alert,
+        let alertController = UIAlertController(ofStyle: .alert,
                                       withTitle: AppTexts.AlertMessages.networkUnreachableWithExclamation,
                                       andMessage: AppTexts.AlertMessages.youAreNotConnectedToInternet)
-        alert.addAction(havingTitle: AppTexts.AlertMessages.tapToRetry,
+        alertController.addAction(havingTitle: AppTexts.AlertMessages.tapToRetry,
                         ofStyle: .default) { _ in
             outputBlock()
         }
-        alert.present()
+        alertController.present()
     }
 
     func handle401StatueCode() {
-        let alert = UIAlertController(ofStyle: .alert,
+        let alertController = UIAlertController(ofStyle: .alert,
                                       withTitle: AppTexts.AlertMessages.sessionExpiredWithExclamation,
                                       andMessage: AppTexts.AlertMessages.yourSessionHasExpiredPleaseLoginAgain)
-        alert.addAction(havingTitle: AppTexts.AlertMessages.ok.uppercased(),
+        alertController.addAction(havingTitle: AppTexts.AlertMessages.ok.uppercased(),
                         ofStyle: .default) { _ in
             Singleton.sharedInstance.generalFunctions.deinitilseAllVariables()
         }
-        alert.present()
+        alertController.present()
     }
 }
