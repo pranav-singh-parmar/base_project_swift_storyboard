@@ -84,7 +84,7 @@ extension URLRequest {
         
         if let headers {
             headers.forEach { key, value in
-                self.addValue(key, forHTTPHeaderField: "\(value)")
+                self.addValue("\(value)", forHTTPHeaderField: key)
             }
         }
     }
