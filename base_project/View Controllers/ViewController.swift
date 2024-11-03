@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     @IBOutlet private weak var emptyListView: EmptyListView!
     
-    @IBOutlet private weak var acitivityIndicatory: UIActivityIndicatorView!
+    @IBOutlet private weak var activityIndicatory: UIActivityIndicatorView!
     
     //MARK: - Variables
     private let charactersAC = CharactersApiClass()
@@ -31,17 +31,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.title = AppTexts.breakingBadCharacters
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        acitivityIndicatory.hidesWhenStopped = true
+        activityIndicatory.hidesWhenStopped = true
         emptyListView.isHidden = true
         charactersTV.dataSource = self
         charactersTV.delegate = self
         charactersTV.refreshControl = refreshControl
-        charactersAC.getCharacterswithExecutionBlock(updateScreenOnUpdaingApiStatus)
+        charactersAC.getCharactersWithExecutionBlock(updateScreenOnUpdatingApiStatus)
     }
     
     //MARK: - objc methods
     @objc func onRefresh(_ refreshControl: UIRefreshControl) {
-        charactersAC.getCharacterswithExecutionBlock(updateScreenOnUpdaingApiStatus, shouldClearList: true)
+        charactersAC.getCharactersWithExecutionBlock(updateScreenOnUpdatingApiStatus, shouldClearList: true)
     }
 }
 
@@ -78,7 +78,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.tableFooterView = UIView()
             } else {
                 tableView.tableFooterView = getSpinnerForTableView(tableView)
-                charactersAC.paginateWithIndex(indexPath.row, andExecutionBlock: updateScreenOnUpdaingApiStatus)
+                charactersAC.paginateWithIndex(indexPath.row, andExecutionBlock: updateScreenOnUpdatingApiStatus)
             }
         }
     }
@@ -87,19 +87,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - APIs
 extension ViewController {
     
-    private func updateScreenOnUpdaingApiStatus() {
+    private func updateScreenOnUpdatingApiStatus() {
         switch charactersAC.getCharactersAS {
         case .IsBeingHit:
             if charactersAC.characters.isEmpty {
                 if !refreshControl.isRefreshing {
-                    acitivityIndicatory.isHidden = false
-                    acitivityIndicatory.startAnimating()
+                    activityIndicatory.isHidden = false
+                    activityIndicatory.startAnimating()
                 }
                 charactersTV.isHidden = true
             } else {
-                acitivityIndicatory.isHidden = true
-                if acitivityIndicatory.isAnimating {
-                    acitivityIndicatory.stopAnimating()
+                activityIndicatory.isHidden = true
+                if activityIndicatory.isAnimating {
+                    activityIndicatory.stopAnimating()
                 }
                 charactersTV.isHidden = false
             }
@@ -107,8 +107,8 @@ extension ViewController {
             if refreshControl.isRefreshing {
                 refreshControl.endRefreshing()
             } else {
-                if acitivityIndicatory.isAnimating {
-                    acitivityIndicatory.stopAnimating()
+                if activityIndicatory.isAnimating {
+                    activityIndicatory.stopAnimating()
                 }
             }
             if charactersAC.characters.isEmpty {
